@@ -1,8 +1,7 @@
 module.exports = {
 	isTdd : function( s ) {
-		return s.indexOf('tdd') !== -1;
-
-		
+		//return s.indexOf('stdd') !== -1;
+		return true;
 	}
 
 }
