@@ -1,0 +1,19 @@
+{
+  "name": "greenstone",
+  "version": "0.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://disordinary@bitbucket.org/disordinary/greenstone.git"
+  },
+  "author": "",
+  "license": "BSD",
+   "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.15.1"
+  }
+}
