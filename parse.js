@@ -41,7 +41,6 @@ function prepare_tokens( template ) {
     // match slash [^\*]/(?!\*) (last character)
     // match > >= < <= * && ||  without breaking
     var tokens = template
-
         .replace( /([ {}\(\)"\'=;,$\n.#@]|\/\*|\*\/)/gi , ' $1 ')
         //we don't care about new lines or tabs so we simply ignore them.
         //will need to rethink this for formatted text
@@ -55,7 +54,7 @@ function parse_block( tokens , _arguments , type , _tag  ) {
     var children = [];
     var tag = "";
     var arguments = null;
-    var thisNode = new NODE( _tag , BLOCK_TYPE.BLOCK , _arguments);
+    var thisNode = new NODE( _tag , BLOCK_TYPE.BLOCK , _arguments );
     var last_token;
     var token;
     while( tokens.length ) {
@@ -162,9 +161,12 @@ function parse_argument( tokens , type ) {
 
                 value = val;
             }
+        } else if( token === "=" || token === "!" || token === "<" || token === ">" ) {
+               tags.push( { key : "OP" , value : token });
+
         }
         if( token === ")" ) {
-             tags.push( { key : key , value : value || true });
+          tags.push( { key : key , value : value || true });
              return tags;
         }
     }
@@ -236,3 +238,7 @@ function lookahead( tokens , comparison ) {
 module.exports.prepare_tokens = prepare_tokens;
 module.exports.parse_block = parse_block;
 module.exports.parse_argument = parse_argument;
+module.exports.parse = function( template_string ) {
+  var tokens = prepare_tokens( template_string );
+  return parse_block( tokens );
+}

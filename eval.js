@@ -31,7 +31,7 @@ module.exports.evaluate = function( template , variables ) {
     var base = document.createElement("BASE");
    // console.log( template );
     evaluate( base , template.children , new SCOPE( variables ) );
-    console.log( base.toString());
+    //console.log( base.toString());
     return base;
 }
 function evaluate( parent_node , nodes , scope ) {
